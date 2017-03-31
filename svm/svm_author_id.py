@@ -27,7 +27,7 @@ labels_train = labels_train[:len(labels_train)/100]
 #########################################################
 ### your code goes here ###
 from sklearn.svm import SVC
-clf = SVC(kernel="rbf")
+clf = SVC(C=10000,kernel="rbf")
 
 t0 = time()
 clf.fit(features_train, labels_train)
@@ -37,7 +37,13 @@ t0 = time()
 pred = clf.predict(features_test)
 print "predicting time:", round(time()-t0, 3), "s"
 #### make a set of predictions on the test data
+# print pred[10]  # 10th prediction
+# print pred[26]  # 26th prediction
+# print pred[50]  # 50th prediction
 
+
+
+print
 
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
